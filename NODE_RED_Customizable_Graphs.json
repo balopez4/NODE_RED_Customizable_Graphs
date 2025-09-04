@@ -1,0 +1,633 @@
+[
+    {
+        "id": "a111111111111111",
+        "type": "tab",
+        "label": "Power vs Voltage",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7c9b818def54ce0f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "f6g7h8i9j0k1l2m3",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e5f6g7h8i9j0k1l2",
+        "type": "ui_group",
+        "name": "Graphs",
+        "tab": "f6g7h8i9j0k1l2m3",
+        "order": 1,
+        "disp": true,
+        "width": "22",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a79e01aa.50e02",
+        "type": "ui_tab",
+        "name": "DEMO",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "caa83089.9c72b",
+        "type": "ui_group",
+        "name": "Demo",
+        "tab": "a79e01aa.50e02",
+        "order": 1,
+        "disp": true,
+        "width": "19",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "720155847d0c16e8",
+        "type": "ui_spacer",
+        "z": "a111111111111111",
+        "name": "spacer",
+        "group": "e5f6g7h8i9j0k1l2",
+        "order": 6,
+        "width": "9",
+        "height": "1"
+    },
+    {
+        "id": "3433f03d5b97c7aa",
+        "type": "ui_spacer",
+        "z": "a111111111111111",
+        "name": "spacer",
+        "group": "e5f6g7h8i9j0k1l2",
+        "order": 4,
+        "width": "9",
+        "height": "1"
+    },
+    {
+        "id": "e07f68f3cdca80ca",
+        "type": "ui_spacer",
+        "z": "a111111111111111",
+        "name": "spacer",
+        "group": "e5f6g7h8i9j0k1l2",
+        "order": 2,
+        "width": "9",
+        "height": "1"
+    },
+    {
+        "id": "a222222222222222",
+        "type": "inject",
+        "z": "a111111111111111",
+        "name": "Every 1s",
+        "props": [],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "a333333333333333"
+            ]
+        ]
+    },
+    {
+        "id": "a333333333333333",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "Generate Random Data Pow & Volt",
+        "func": "// Generate arrays of random values for Power (X) and Voltage (Y)\nlet points = [];\nfor (let i = 0; i < 20; i++) {\n    let power = Math.floor(Math.random() * 100);   // 0–99\n    let voltage = Math.floor(Math.random() * 240); // 0–239\n    points.push({ power, voltage });\n}\n\nmsg.payload = points;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 320,
+        "wires": [
+            [
+                "a444444444444444",
+                "6037dc2c110da22a"
+            ]
+        ]
+    },
+    {
+        "id": "a444444444444444",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "Format Chart Data FILL",
+        "func": "msg.payload.sort((a, b) => a.power - b.power); // Sort\n\n// Extract X and Y arrays\nlet powers_X = msg.payload.map(p => p.power);\nlet voltages_Y= msg.payload.map(p => p.voltage);\n\n// Build payload for ui_chart\nlet payload = [{\n    series: [\"Power vs Voltage\"], // Legend \n    data: [voltages_Y],    // Y axis\n    labels: powers_X       // X axis\n}];\n\n// Chart config \nlet ui_control = {\n    options: {\n        scales: {\n            xAxes: [{\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Power\",   // Title of X axis\n                    fontSize: 18,\n                    fontColor: \"#000\"\n                },\n                ticks: {\n                    autoSkip: true,         // Skip labels if too many\n                    maxTicksLimit: 10,      // Max labels to display\n                    fontSize: 14,\n                    fontColor: \"#000\"\n                }\n            }],\n            yAxes: [{\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Voltage\", // Title of Y axis\n                    fontSize: 18,\n                    fontColor: \"#000\"\n                },\n                ticks: {\n                    fontSize: 14,\n                    fontColor: \"#000\"\n                }\n            }]\n        },\n        legend: {\n            display: true,\n            labels: {\n                fontSize: 14,\n                fontColor: \"#000\"\n            }\n        },\n        elements: {\n            line: { borderWidth: 2 }\n        },\n     \n    },\n    colors: [\"#0066ff\"] // Blue line\n};\n\nreturn { payload, ui_control };",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 380,
+        "wires": [
+            [
+                "2dc7bc3a07edca36"
+            ]
+        ]
+    },
+    {
+        "id": "2dc7bc3a07edca36",
+        "type": "ui_chart",
+        "z": "a111111111111111",
+        "name": "Graph XY FILL",
+        "group": "e5f6g7h8i9j0k1l2",
+        "order": 3,
+        "width": "16",
+        "height": "10",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 980,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "97790102e29e4727",
+        "type": "ui_chart",
+        "z": "a111111111111111",
+        "name": "Graph XY NORMAL",
+        "group": "e5f6g7h8i9j0k1l2",
+        "order": 1,
+        "width": "16",
+        "height": "10",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1000,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6037dc2c110da22a",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "Format Chart Data NORMAL",
+        "func": "msg.payload.sort((a, b) => a.power - b.power); //sort\n\n// Extract X and Y arrays\nlet powers_X = msg.payload.map(p => p.power);\nlet voltages_Y = msg.payload.map(p => p.voltage);\n\n// Build payload for ui_chart\nlet payload = [{\n    series: [\"Power vs Voltage\"], // Legend \n    data: [voltages_Y],    // Y axis\n    labels: powers_X       // X axis\n}];\n\n// Chart config \nlet ui_control = {\n    options: {\n        scales: {\n            xAxes: [{\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Power\", // Title of X axis\n                    fontSize: 18,\n                    fontColor: \"#000\"\n                },\n                ticks: {\n                    autoSkip: true,         // Skip labels if too many\n                    maxTicksLimit: 10,      // Max labels to display\n                    fontSize: 14,\n                    fontColor: \"#000\"\n                }\n            }],\n            yAxes: [{\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Voltage\", // Title of Y axis\n                    fontSize: 18,\n                    fontColor: \"#000\"\n                },\n                ticks: {\n                    fontSize: 14,\n                    fontColor: \"#000\"\n                }\n            }]\n        },\n        legend: {\n            display: true,\n            labels: {\n                fontSize: 14,\n                fontColor: \"#000\"\n            }\n        },\n        elements: {\n            line: { borderWidth: 10, fill: false }\n        },\n    },\n    colors: [\"#ff0000\"] // Red line\n};\n\nreturn { payload, ui_control };\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 320,
+        "wires": [
+            [
+                "97790102e29e4727"
+            ]
+        ]
+    },
+    {
+        "id": "7667b9d69ded3fdb",
+        "type": "inject",
+        "z": "a111111111111111",
+        "name": "Cada 1s",
+        "props": [],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "x": 120,
+        "y": 480,
+        "wires": [
+            [
+                "1d30d4ccad07f9ff"
+            ]
+        ]
+    },
+    {
+        "id": "1d30d4ccad07f9ff",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "Generate Random Data TIME",
+        "func": "// Genera X = timestamp y Y = random\nlet x = Date.now();\nlet y = Math.floor(Math.random() * 100);\n\nmsg.payload = { x: x, y: y };\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 480,
+        "wires": [
+            [
+                "f97877cc2b205d19"
+            ]
+        ]
+    },
+    {
+        "id": "f97877cc2b205d19",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "FormatearDatos TIME",
+        "func": "// Retrieve saved history from flow context\nlet buffer = flow.get(\"randomBuffer\") || [];\n\n// Add new data point\nbuffer.push({ x: msg.payload.x, y: msg.payload.y });\n\n// Limit buffer size (max 50 points)\nif (buffer.length > 50) buffer.shift();\n\nflow.set(\"randomBuffer\", buffer);\n\n// Prepare payload for ui_chart\nmsg.payload = [{\n    series: [\"Voltage\"],\n    data: [buffer],\n    labels: buffer.map(p => new Date(p.x).toLocaleTimeString())\n}];\n\n// Chart configuration\nmsg.ui_control = {\n    useUTC: false,\n    options: {\n        scales: {\n            xAxes: [{\n                type: \"time\",\n                time: {\n                    tooltipFormat: \"HH:mm:ss\",\n                    displayFormats: {\n                        second: \"HH:mm:ss\"\n                    }\n                },\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Time \",\n                    fontSize: 16,\n                    fontColor: \"#000\"\n                }\n            }],\n            yAxes: [{\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Random Value\",\n                    fontSize: 16,\n                    fontColor: \"#000\"\n                }\n            }]\n        }\n    }\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 480,
+        "wires": [
+            [
+                "4ca6c1b5734e7a7c"
+            ]
+        ]
+    },
+    {
+        "id": "4ca6c1b5734e7a7c",
+        "type": "ui_chart",
+        "z": "a111111111111111",
+        "name": "Graph WITH TIME",
+        "group": "e5f6g7h8i9j0k1l2",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Graph WITH TIME",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 990,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59423d99254841c0",
+        "type": "inject",
+        "z": "a111111111111111",
+        "name": "Generar cada 1s",
+        "props": [],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "cbf4c51a0a1acc6b"
+            ]
+        ]
+    },
+    {
+        "id": "cbf4c51a0a1acc6b",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "Random Temperature",
+        "func": "msg.payload = Math.random() * 100\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "bc587b7cafb336e6"
+            ]
+        ]
+    },
+    {
+        "id": "bc587b7cafb336e6",
+        "type": "ui_chart",
+        "z": "a111111111111111",
+        "name": "OLD CHART",
+        "group": "caa83089.9c72b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "30",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 970,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "83c61f2ce64ce390",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "Generate Random Data 3 SERIES",
+        "func": "// Generate arrays of random values for Power (X), Voltage (Y1), Current (Y2)\nlet points = [];\nfor (let i = 0; i < 20; i++) {\n    let power = Math.floor(Math.random() * 100);   // 0–99\n    let voltage = Math.floor(Math.random() * 240); // 0–239\n    let current = Math.floor(Math.random() * 200);  // 0–49\n    points.push({ power, voltage, current });\n}\n\nmsg.payload = points;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "093ffa2fdd3f2ebd"
+            ]
+        ]
+    },
+    {
+        "id": "61e1dabba242c8f4",
+        "type": "inject",
+        "z": "a111111111111111",
+        "name": "Every 1s",
+        "props": [],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "x": 120,
+        "y": 580,
+        "wires": [
+            [
+                "83c61f2ce64ce390"
+            ]
+        ]
+    },
+    {
+        "id": "093ffa2fdd3f2ebd",
+        "type": "function",
+        "z": "a111111111111111",
+        "name": "Format Chart Data SERIES",
+        "func": "// Extract X (Power), Y1 (Voltage), Y2 (Current)\nlet powers_X = msg.payload.map(p => p.power);\nlet voltages_Y = msg.payload.map(p => p.voltage);\nlet currents_Y = msg.payload.map(p => p.current);\n\n// Build payload for ui_chart (multi-series)\nlet payload = [{\n    series: [\"Voltage\", \"Current\"],   // Legend for both curves\n    data: [voltages_Y, currents_Y],   // Y arrays\n    labels: powers_X                  // X axis (Power)\n}];\n\n// Chart config \nlet ui_control = {\n    options: {\n        scales: {\n            xAxes: [{\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Power\",   // Title of X axis\n                    fontSize: 18,\n                    fontColor: \"#000\"\n                },\n                ticks: {\n                    autoSkip: true,         // Skip labels if too many\n                    maxTicksLimit: 10,\n                    fontSize: 14,\n                    fontColor: \"#000\"\n                }\n            }],\n            yAxes: [{\n                scaleLabel: {\n                    display: true,\n                    labelString: \"Values\",  // Title of Y axis\n                    fontSize: 18,\n                    fontColor: \"#000\"\n                },\n                ticks: {\n                    fontSize: 14,\n                    fontColor: \"#000\"\n                }\n            }]\n        },\n        legend: {\n            display: true,\n            labels: {\n                fontSize: 14,\n                fontColor: \"#000\"\n            }\n        },\n        elements: {\n            line: { borderWidth: 2 } // fill:false → no shaded area\n        },\n    },\n    colors: [\n        \"#0066ff\", // Blue   - Voltage\n        \"#2fff00\"  // Green  - Current\n    ]\n};\n\nreturn { payload, ui_control };\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 580,
+        "wires": [
+            [
+                "53ed80806354aa09"
+            ]
+        ]
+    },
+    {
+        "id": "53ed80806354aa09",
+        "type": "ui_chart",
+        "z": "a111111111111111",
+        "name": "MULTIPLE SERIES",
+        "group": "e5f6g7h8i9j0k1l2",
+        "order": 7,
+        "width": "16",
+        "height": "10",
+        "label": "MULTIPLE SERIES",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000",
+            "#000000"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 990,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    }
+]
